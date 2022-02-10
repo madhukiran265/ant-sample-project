@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ant-project" basedir="."  default="init">
+<!-- from here targets will start -->
+	
+ <target name="init" depends="clean,create,compile,package" description="execute all tasks">
+		<echo>project successfull executed</echo>
+		
+	</target>
+	<target name="clean" description="this will delete my old directories">
+      <delete dir="build/class"></delete>
+		<delete dir="target"></delete>
+    </target> 
+	
+   <target name="create" description="it will create the directories">
+   	<mkdir dir="build/class"/>
+   	<mkdir dir="target"/>
+   </target>			
+				
+	<target name="compile">
+	<javac srcdir="src" destdir="build/class"></javac>
+	</target>
+	
+		<target name="package">
+		<jar basedir="build/class" destfile="target/hello-world.jar"></jar>
+		</target>
+	</project>
